@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafie Kofie Pekanbaru - Official Website</title>
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Google & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS Terpisah -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#" data-page="home">
+                <i class="fa-solid fa-mug-hot text-warning brand-icon animate-bounce"></i> Kafie Kofie
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto gap-2">
+                    <li class="nav-item"><a class="nav-link active" href="#" data-page="home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-page="menu">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-page="tentang">Tentang</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-page="kontak">Kontak</a></li>
+                </ul>
+                <button class="btn btn-outline-warning ms-lg-3 position-relative btn-hover-grow" id="btnCartCounter" data-bs-toggle="modal" data-bs-target="#cartModal">
+                    <i class="fa-solid fa-cart-shopping"></i> Pesanan
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cartCount">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CONTAINER UTAMA HALAMAN (SPA) -->
+    <div id="app-content">
+
+        <!-- ================= HALAMAN 1: HOME (VISUAL UPDATE) ================= -->
+        <section id="page-home" class="spa-page page-active">
+            <div class="jumbotron-hero text-white d-flex align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 text-start">
+                            <span class="badge bg-warning text-dark px-3 py-2 rounded-pill mb-3 text-uppercase fw-bold animate-badge">Kedai Kopi Kontemporer</span>
+                            <h1 class="display-3 fw-bold text-gradient mb-3">Kemegahan Rasa &<br>Kreativitas Kuliner</h1>
+                            <p class="lead text-muted-custom mb-4 fs-5 pe-lg-5">Nikmati sentuhan keanggunan cita rasa olahan kopi khas dan atmosfer ruang bersantai terbaik di Pekanbaru[cite: 4]. Tempat bertemunya produktivitas dan inspirasi.</p>
+                            <div class="d-flex gap-3 flex-wrap">
+                                <button class="btn btn-warning btn-lg fw-bold px-4 py-3 shadow btn-hover-grow" data-page="menu">Jelajahi Menu</button>
+                                <button class="btn btn-outline-light btn-lg px-4 py-3 shadow glass-button" data-page="kontak">Pesan Instan</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card Penjelasan Ber-Animasi Icon -->
+            <div class="container my-5 py-4">
+                <div class="row g-4 text-center">
+                    <div class="col-md-4">
+                        <div class="p-4 card-feature rounded-4 h-100 shadow-sm border">
+                            <div class="icon-animated-box mb-3 mx-auto">
+                                <i class="fa-solid fa-seedling text-warning display-5"></i>
+                            </div>
+                            <h4 class="fw-bold">Biji Kopi Pilihan</h4>
+                            <p class="text-muted mb-0">Olahan kopi kontemporer dari biji premium Nusantara yang diproses secara presisi[cite: 4].</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="p-4 card-feature rounded-4 h-100 shadow-sm border">
+                            <div class="icon-animated-box mb-3 mx-auto">
+                                <i class="fa-solid fa-utensils text-warning display-5"></i>
+                            </div>
+                            <h4 class="fw-bold">Kuliner Kreatif</h4>
+                            <p class="text-muted mb-0">Variasi menu makanan utama dan cemilan modern peneman waktu produktivitasmu[cite: 4].</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="p-4 card-feature rounded-4 h-100 shadow-sm border">
+                            <div class="icon-animated-box mb-3 mx-auto">
+                                <i class="fa-solid fa-wifi text-warning display-5"></i>
+                            </div>
+                            <h4 class="fw-bold">Ruang Nyaman</h4>
+                            <p class="text-muted mb-0">Fasilitas terbaik yang dirancang mendukung kebutuhan kerja maupun berkumpul santai[cite: 4].</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= HALAMAN 2: MENU (SLIDESHOW & MORE CARDS) ================= -->
+        <section id="page-menu" class="spa-page d-none">
+            <div class="container my-5">
+                
+                <!-- Slide Show Terlaris Premium (Ken Burns Effect) -->
+                <div class="mb-5 bg-dark p-4 rounded-4 shadow text-white position-relative overflow-hidden border-start border-warning border-4">
+                    <h4 class="fw-bold text-warning mb-3 px-2"><i class="fa-solid fa-fire animate-pulse text-danger"></i> Menu Terlaris Pekanbaru</h4>
+                    <div id="carouselTerlaris" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                        <div class="carousel-inner rounded-3">
+                            <div class="carousel-item active" data-bs-interval="4000">
+                                <div class="row align-items-center bg-brown-gradient p-4 text-dark">
+                                    <div class="col-md-4 overflow-hidden rounded-3">
+                                        <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=500&q=80" class="d-block w-100 rounded-3 img-carousel ken-burns" alt="Aren Latte">
+                                    </div>
+                                    <div class="col-md-8 text-white mt-3 mt-md-0">
+                                        <h3 class="fw-bold text-warning">Kafie Aren Latte</h3>
+                                        <p>Cita rasa gula aren murni dipadukan espresso shot ganda khas racikan barista utama Kafie Kofie[cite: 4].</p>
+                                        <button class="btn btn-warning fw-bold btn-buy-instant btn-hover-grow" data-id="1" data-title="Kafie Aren Latte" data-price="22000"><i class="fa-solid fa-cart-plus"></i> Beli Instan - Rp 22.000</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item" data-bs-interval="4000">
+                                <div class="row align-items-center bg-brown-gradient p-4 text-dark">
+                                    <div class="col-md-4 overflow-hidden rounded-3">
+                                        <img src="https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=500&q=80" class="d-block w-100 rounded-3 img-carousel ken-burns" alt="Croissant">
+                                    </div>
+                                    <div class="col-md-8 text-white mt-3 mt-md-0">
+                                        <h3 class="fw-bold text-warning">Butter Croissant</h3>
+                                        <p>Pastri mentega premium bertekstur garing di luar yang menjadi hidangan pendamping wajib kopi hitam.</p>
+                                        <button class="btn btn-warning fw-bold btn-buy-instant btn-hover-grow" data-id="5" data-title="Butter Croissant" data-price="18000"><i class="fa-solid fa-cart-plus"></i> Beli Instan - Rp 18.000</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselTerlaris" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselTerlaris" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+                    </div>
+                </div>
+
+                <div class="text-center mb-5">
+                    <h2 class="fw-bold text-dark">Katalog Produk Menu Ragam</h2>
+                    <div class="divider mx-auto bg-warning mb-2" style="height: 3px; width: 60px;"></div>
+                </div>
+
+                <!-- Tab Navigation Bootstrap -->
+                <ul class="nav nav-pills justify-content-center mb-5 gap-2" id="menuTabs">
+                    <li class="nav-item"><button class="nav-link active rounded-pill px-4" id="coffee-tab" data-bs-toggle="pill" data-bs-target="#coffee">Signature Coffee[cite: 4]</button></li>
+                    <li class="nav-item"><button class="nav-link rounded-pill px-4" id="noncoffee-tab" data-bs-toggle="pill" data-bs-target="#noncoffee">Non-Coffee[cite: 4]</button></li>
+                    <li class="nav-item"><button class="nav-link rounded-pill px-4" id="snacks-tab" data-bs-toggle="pill" data-bs-target="#snacks">Cemilan & Makanan[cite: 4]</button></li>
+                </ul>
+
+                <!-- DATA TAB CONTENT DENGAN TAMBAHAN DAFTAR MENU BARU -->
+                <div class="tab-content" id="menuTabsContent">
+                    <!-- Kategori Kopi (Expanded) -->
+                    <div class="tab-pane fade show active" id="coffee">
+                        <div class="row row-cols-1 row-cols-md-3 g-4">
+                            <!-- Menu 1 -->
+                            <div class="col">
+                                <div class="card product-card h-100 border-0 shadow-sm rounded-4 overflow-hidden d-flex flex-column">
+                                    <div class="img-ratio-container"><img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Aren Latte"></div>
+                                    <div class="card-body p-4 d-flex flex-column justify-content-between flex-grow-1">
+                                        <div>
+                                            <h5 class="card-title fw-bold">Kafie Aren Latte</h5>
+                                            <p class="card-text text-muted small mb-3">Kombinasi eksklusif espresso shot, susu murni, dan keaslian rasa legit sirup gula aren lokal Pekanbaru[cite: 4].</p>
+                                        </div>
+                                        <div>
+                                            <p class="text-warning fw-bold mb-3 fs-5">Rp 22.000[cite: 4]</p>
+                                            <div class="d-flex gap-2">
+                                                <button class="btn btn-dark w-50 btn-sm rounded-3 btn-detail-trigger" data-title="Kafie Aren Latte" data-desc="Perpaduan espresso premium dengan susu segar murni dan sirup gula aren alami pilihan khas Kafie Kofie[cite: 4].">Detail</button>
+                                                <button class="btn btn-warning w-50 btn-sm rounded-3 fw-bold btn-add-cart btn-hover-grow" data-id="1" data-title="Kafie Aren Latte" data-price="22000"><i class="fa-solid fa-plus"></i> Beli</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Menu 2 -->
+                            <div class="col">
+                                <div class="card product-card h-100 border-0 shadow-sm rounded-4 overflow-hidden d-flex flex-column">
+                                    <div class="img-ratio-container"><img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="V60"></div>
+                                    <div class="card-body p-4 d-flex flex-column justify-content-between flex-grow-1">
+                                        <div>
+                                            <h5 class="card-title fw-bold">Manual Brew V60</h5>
+                                            <p class="card-text text-muted small mb-3">Ekstraksi kopi filter metode manual dengan karakter bodi jernih, bersih, serta kaya wangi floral buah.</p>
+                                        </div>
+                                        <div>
+                                            <p class="text-warning fw-bold mb-3 fs-5">Rp 24.000</p>
+                                            <div class="d-flex gap-2">
+                                                <button class="btn btn-dark w-50 btn-sm rounded-3 btn-detail-trigger" data-title="Manual Brew V60" data-desc="Penyeduhan tuang manual menggunakan filter khusus kertas Jepang untuk mengunci kenikmatan orisinal biji kopi arabika pilihan.">Detail</button>
+                                                <button class="btn btn-warning w-50 btn-sm rounded-3 fw-bold btn-add-cart btn-hover-grow" data-id="2" data-title="Manual Brew V60" data-price="24000"><i class="fa-solid fa-plus"></i> Beli</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Menu 3 -->
+                            <div class="col">
+                                <div class="card product-card h-100 border-0 shadow-sm rounded-4 overflow-hidden d-flex flex-column">
+                                    <div class="img-ratio-container"><img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Macchiato"></div>
+                                    <div class="card-body p-4 d-flex flex-column justify-content-between flex-grow-1">
+                                        <div>
+                                            <h5 class="card-title fw-bold">Caramel Macchiato</h5>
+                                            <p class="card-text text-muted small mb-3">Espresso bold pekat dipadukan gurihnya steamed milk serta siraman ekstra saus karamel premium di atas foam.</p>
+                                        </div>
+                                        <div>
+                                            <p class="text-warning fw-bold mb-3 fs-5">Rp 26.000</p>
+                                            <div class="d-flex gap-2">
+                                                <button class="btn btn-dark w-50 btn-sm rounded-3 btn-detail-trigger" data-title="Caramel Macchiato" data-desc="Espresso base dengan paduan sirup vanila lembut, foam susu tebal, dan topping dekorasi saus karamel manis.">Detail</button>
+                                                <button class="btn btn-warning w-50 btn-sm rounded-3 fw-bold btn-add-cart btn-hover-grow" data-id="3" data-title="Caramel Macchiato" data-price="26000"><i class="fa-solid fa-plus"></i> Beli</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Menu Baru 4 -->
+                            <div class="col">
+                                <div class="card product-card h-100 border-0 shadow-sm rounded-4 overflow-hidden d-flex flex-column">
+                                    <div class="img-ratio-container"><img src="https://images.unsplash.com/photo-1534706936160-d5ee67737049?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Espresso Matcha"></div>
+                                    <div class="card-body p-4 d-flex flex-column justify-content-between flex-grow-1">
+                                        <div>
+                                            <h5 class="card-title fw-bold">Dirty Matcha Espresso</h5>
+                                            <p class="card-text text-muted small mb-3">Kombinasi unik lapisan pekat teh matcha premium Jepang, susu lembut, dan siraman *single shot* espresso arabika.</p>
+                                        </div>
+                                        <div>
+                                            <p class="text-warning fw-bold mb-3 fs-5">Rp 27.000</p>
+                                            <div class="d-flex gap-2">
+                                                <button class="btn btn-dark w-50 btn-sm rounded-3 btn-detail-trigger" data-title="Dirty Matcha Espresso" data-desc="Menu eksperimental nikmat yang menggabungkan kesegaran floral teh hijau Uji Matcha dengan kekuatan kafein espresso murni.">Detail</button>
+                                                <button class="btn btn-warning w-50 btn-sm rounded-3 fw-bold btn-add-cart btn-hover-grow" data-id="10" data-title="Dirty Matcha Espresso" data-price="27000"><i class="fa-solid fa-plus"></i> Beli</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Menu Baru 5 -->
+                            <div class="col">
+                                <div class="card product-card h-100 border-0 shadow-sm rounded-4 overflow-hidden d-flex flex-column">
+                                    <div class="img-ratio-container"><img src="https://images.unsplash.com/photo-1571115177098-24ec42ed635d?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Cappuccino"></div>
+                                    <div class="card-body p-4 d-flex flex-column justify-content-between flex-grow-1">
+                                        <div>
+                                            <h5 class="card-title fw-bold">Classic Cappuccino</h5>
+                                            <p class="card-text text-muted small mb-3">Komposisi seimbang yang kuat antara *espresso*, tekstur susu panas, dan lapisan busa susu tebal di atasnya.</p>
+                                        </div>
+                                        <div>
+                                            <p class="text-warning fw-bold mb-3 fs-5">Rp 23.000</p>
+                                            <div class="d-flex gap-2">
+                                                <button class="btn btn-dark w-50 btn-sm rounded-3 btn-detail-trigger" data-title="Classic Cappuccino" data-desc="Kopi klasik ala Italia dengan taburan bubuk cokelat tipis di atas busa susu mikro yang lembut stabil.">Detail</button>
+                                                <button class="btn btn-warning w-50 btn-sm rounded-3 fw-bold btn-add-cart btn-hover-grow" data-id="11" data-title="Classic Cappuccino" data-price="23000"><i class="fa-solid fa-plus"></i> Beli</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kategori Non-Kopi (Expanded) -->
+                    <div class="tab-pane fade" id="noncoffee">
+                        <div class="row row-cols-1 row-cols-md-3 g-4">
+                            <!-- Menu 1 -->
+                            <div class="col">
+                                <div class="card product-card h-100 border-0 shadow-sm rounded-4 overflow-hidden d-flex flex-column">
+                                    <div class="img-ratio-container"><img src="https://images.unsplash.com/photo-1534706936160-d5ee67737049?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Matcha"></div>
+                                    <div class="card-body p-4 d-flex flex-column justify-content-between flex-grow-1">
+                                        <div>
+                                            <h5 class="card-title fw-bold">Pure Premium Matcha</h5>
+                                            <p class="card-text text-muted small mb-3">Seduhan bubuk teh hijau matcha asli impor Kyoto Jepang bertekstur kental krim susu segar[cite: 4].</p>
+                                        </div>
+                                        <div>
+                                            <p class="text-warning fw-bold mb-3 fs-5">Rp 25.000[cite: 4]</p>
+                                            <div class="d-flex gap-2">
+                                                <button class="btn btn-dark w-50 btn-sm rounded-3 btn-detail-trigger" data-title="Pure Premium Matcha" data-desc="Seduhan bubuk matcha otentik dengan racikan krim susu manis yang lembut menyegarkan[cite: 4].">Detail</button>
+                                                <button class="btn btn-warning w-50 btn-sm rounded-3 fw-bold btn-add-cart btn-hover-grow" data-id="4" data-title="Pure Premium Matcha" data-price="25000"><i class="fa-solid fa-plus"></i> Beli</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Menu 2 -->
+                            <div class="col">
+                                <div class="card product-card h-100 border-0 shadow-sm rounded-4 overflow-hidden d-flex flex-column">
+                                    <div class="img-ratio-container"><img src="https://images.unsplash.com/photo-1563865436874-9aef32095ffd?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Chocolate"></div>
+                                    <div class="card-body p-4 d-flex flex-column justify-content-between flex-grow-1">
+                                        <div>
+                                            <h5 class="card-title fw-bold">Velvet Dark Chocolate</h5>
+                                            <p class="card-text text-muted small mb-3">Seduhan eksklusif biji cokelat hitam pilihan berpahit-manis seimbang untuk penenang mood harian.</p>
+                                        </div>
+                                        <div>
+                                            <p class="text-warning fw-bold mb-3 fs-5">Rp 23.000</p>
+                                            <div class="d-flex gap-2">
+                                                <button class="btn btn-dark w-50 btn-sm rounded-3 btn-detail-trigger" data-title="Velvet Dark Chocolate" data-desc="Racikan cokelat hitam murni dengan perpaduan foam susu manis hangat yang memanjakan lidah.">Detail</button>
+                                                <button class="btn btn-warning w-50 btn-sm rounded-3 fw-bold btn-add-cart btn-hover-grow" data-id="8" data-title="Velvet Dark Chocolate" data-price="23000"><i class="fa-solid fa-plus"></i> Beli</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Menu Baru 3 -->
+                            <div class="col">
+                                <div class="card product-card h-100 border-0 shadow-sm rounded-4 overflow-hidden d-flex flex-column">
+                                    <div class="img-ratio-container"><img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Summer Berry Tea"></div>
+                                    <div class="card-body p-4 d-flex flex-column justify-content-between flex-grow-1">
+                                        <div>
+                                            <h5 class="card-title fw-bold">Summer Berry Mojito</h5>
+                                            <p class="card-text text-muted small mb-3">Racikan sirup beri merah asam-manis, perasan lemon, daun mint segar, dan siraman air soda murni.</p>
+                                        </div>
+                                        <div>
+                                            <p class="text-warning fw-bold mb-3 fs-5">Rp 22.000</p>
+                                            <div class="d-flex gap-2">
+                                                <button class="btn btn-dark w-50 btn-sm rounded-3 btn-detail-trigger" data-title="Summer Berry Mojito" data-desc="Minuman dingin non-kopi super segar yang sangat cocok diminum saat cuaca terik Pekanbaru.">Detail</button>
+                                                <button class="btn btn-warning w-50 btn-sm rounded-3 fw-bold btn-add-cart btn-hover-grow" data-id="12" data-title="Summer Berry Mojito" data-price="22000"><i class="fa-solid fa-plus"></i> Beli</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kategori Makanan (Expanded) -->
+                    <div class="tab-pane fade" id="snacks">
+                        <div class="row row-cols-1 row-cols-md-3 g-4">
+                            <!-- Menu 1 -->
+                            <div class="col">
+                                <div class="card product-card h-100 border-0 shadow-sm rounded-4 overflow-hidden d-flex flex-column">
+                                    <div class="img-ratio-container"><img src="https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Croissant"></div>
+                                    <div class="card-body p-4 d-flex flex-column justify-content-between flex-grow-1">
+                                        <div>
+                                            <h5 class="card-title fw-bold">Butter Croissant</h5>
+                                            <p class="card-text text-muted small mb-3">Pastri hangat ala Prancis dengan lapisan luar garing berongga renyah dan penuh mentega lembut di dalam.</p>
+                                        </div>
+                                        <div>
+                                            <p class="text-warning fw-bold mb-3 fs-5">Rp 18.000</p>
+                                            <div class="d-flex gap-2">
+                                                <button class="btn btn-dark w-50 btn-sm rounded-3 btn-detail-trigger" data-title="Butter Croissant" data-desc="Kue pastri premium renyah hangat terbuat menggunakan mentega murni berkualitas tinggi.">Detail</button>
+                                                <button class="btn btn-warning w-50 btn-sm rounded-3 fw-bold btn-add-cart btn-hover-grow" data-id="5" data-title="Butter Croissant" data-price="18000"><i class="fa-solid fa-plus"></i> Beli</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Menu 2 -->
+                            <div class="col">
+                                <div class="card product-card h-100 border-0 shadow-sm rounded-4 overflow-hidden d-flex flex-column">
+                                    <div class="img-ratio-container"><img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Ricebowl"></div>
+                                    <div class="card-body p-4 d-flex flex-column justify-content-between flex-grow-1">
+                                        <div>
+                                            <h5 class="card-title fw-bold">Kafie Rice Bowl</h5>
+                                            <p class="card-text text-muted small mb-3">Sajian nasi hangat pulen dengan potongan krispi daging ayam saus mentega gurih manis bersayur segar.</p>
+                                        </div>
+                                        <div>
+                                            <p class="text-warning fw-bold mb-3 fs-5">Rp 35.000</p>
+                                            <div class="d-flex gap-2">
+                                                <button class="btn btn-dark w-50 btn-sm rounded-3 btn-detail-trigger" data-title="Kafie Rice Bowl" data-desc="Menu makanan utama penunda lapar: paduan nasi, potongan ayam renyah saus koki istimewa, dan pelengkap orak-arik telur.">Detail</button>
+                                                <button class="btn btn-warning w-50 btn-sm rounded-3 fw-bold btn-add-cart btn-hover-grow" data-id="6" data-title="Kafie Rice Bowl" data-price="35000"><i class="fa-solid fa-plus"></i> Beli</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Menu Baru 3 -->
+                            <div class="col">
+                                <div class="card product-card h-100 border-0 shadow-sm rounded-4 overflow-hidden d-flex flex-column">
+                                    <div class="img-ratio-container"><img src="https://images.unsplash.com/photo-1608039829572-78524f79c4c7?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Choco Croissant"></div>
+                                    <div class="card-body p-4 d-flex flex-column justify-content-between flex-grow-1">
+                                        <div>
+                                            <h5 class="card-title fw-bold">Pain au Chocolat</h5>
+                                            <p class="card-text text-muted small mb-3">Pastri lipat renyah berlapis mentega dengan isian batangan cokelat hitam premium yang meleleh saat dipanggang.</p>
+                                        </div>
+                                        <div>
+                                            <p class="text-warning fw-bold mb-3 fs-5">Rp 22.000</p>
+                                            <div class="d-flex gap-2">
+                                                <button class="btn btn-dark w-50 btn-sm rounded-3 btn-detail-trigger" data-title="Pain au Chocolat" data-desc="Varian croissant cokelat premium khas Prancis dengan perpaduan sensasi garing dan manis meleleh di mulut.">Detail</button>
+                                                <button class="btn btn-warning w-50 btn-sm rounded-3 fw-bold btn-add-cart btn-hover-grow" data-id="13" data-title="Pain au Chocolat" data-price="22000"><i class="fa-solid fa-plus"></i> Beli</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= HALAMAN 3: TENTANG ================= -->
+        <section id="page-tentang" class="spa-page d-none">
+            <div class="container my-5">
+                <div class="alert alert-warning border-0 rounded-4 p-4 shadow-sm mb-5 d-flex align-items-center gap-3">
+                    <i class="fa-solid fa-clock display-6 text-dark animate-pulse"></i>
+                    <div>
+                        <h5 class="fw-bold mb-1">Informasi Operasional</h5>
+                        <p class="mb-0">Kafie Kofie Pekanbaru buka Setiap Hari mulai pukul 10.00 s/d 23.00 WIB[cite: 4].</p>
+                    </div>
+                </div>
+                <div class="row align-items-center g-5">
+                    <div class="col-md-6">
+                        <h2 class="fw-bold text-dark mb-3">Sejarah & Visi Usaha</h2>
+                        <div class="divider bg-warning mb-4" style="height: 3px; width: 60px;"></div>
+                        <p class="text-muted lead">Hadir mewujudkan ruang bersantai kontemporer ternyaman untuk mendukung kreativitas dan produktivitas anak muda Riau[cite: 4].</p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="rounded-4 overflow-hidden shadow img-container-frame">
+                            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=600&q=80" class="img-fluid w-100 image-hover-effect" alt="Tentang Kami">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= HALAMAN 4: KONTAK (MAP FIXED & KASIR FORM) ================= -->
+        <section id="page-kontak" class="spa-page d-none">
+            <div class="container my-5">
+                <div class="row g-5">
+                    <div class="col-md-5">
+                        <h3 class="fw-bold text-dark mb-4">Hubungi & Kunjungi Kami[cite: 4]</h3>
+                        <div class="d-flex align-items-center gap-3 mb-4 card-feature p-3 rounded-4 bg-white border">
+                            <div class="icon-box bg-dark text-warning rounded-3 p-3"><i class="fa-brands fa-whatsapp fa-xl"></i></div>
+                            <div>
+                                <h6 class="fw-bold mb-0">WhatsApp Interaktif[cite: 4]</h6>
+                                <a href="https://wa.me/6287794736116" target="_blank" class="text-decoration-none text-muted">0877-9473-6116[cite: 4]</a>
+                            </div>
+                        </div>
+                        
+                        <!-- TITIK KOORDINAT MAP FIX (Mengarah Ke Jl. Paus, Tengkerang Tengah, Pekanbaru) -->
+                        <div class="rounded-4 overflow-hidden border shadow-sm img-container-frame">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.6918804825946!2d101.44047607577546!3d0.49168926364539864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d5ae9cb9d3e8ad%3A0xe9628285514bfba1!2sKafie%20Kofie!5e0!3m2!1sid!2sid!4v1715700000000!5m2!1sid!2sid" width="100%" height="280" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+
+                    <!-- Form Pembelian Instan Halaman Kontak -->
+                    <div class="col-md-7">
+                        <div class="card border-0 shadow-sm p-4 rounded-4 bg-white border-top border-warning border-4">
+                            <h4 class="fw-bold text-dark mb-1"><i class="fa-solid fa-cash-register text-warning"></i> Nota Pembelian Instan</h4>
+                            <p class="text-muted small mb-4">Pesan menu langsung tanpa berpindah tab halaman lewat formulir kasir otomatis.</p>
+                            
+                            <form id="contactOrderForm" novalidate>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label small fw-bold text-secondary">Nama Pemesan</label>
+                                        <input type="text" class="form-control rounded-3" id="orderNama" placeholder="Nama Anda" required>
+                                        <div class="invalid-feedback">Nama pemesan wajib diisi.</div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label small fw-bold text-secondary">Pilih Menu Produk</label>
+                                        <select class="form-select rounded-3" id="orderProduk" required>
+                                            <option value="" disabled selected>Pilih menu...</option>
+                                            <option value="Kafie Aren Latte" data-price="22000">Kafie Aren Latte - Rp 22.000</option>
+                                            <option value="Manual Brew V60" data-price="24000">Manual Brew V60 - Rp 24.000</option>
+                                            <option value="Caramel Macchiato" data-price="26000">Caramel Macchiato - Rp 26.000</option>
+                                            <option value="Dirty Matcha Espresso" data-price="27000">Dirty Matcha Espresso - Rp 27.000</option>
+                                            <option value="Classic Cappuccino" data-price="23000">Classic Cappuccino - Rp 23.000</option>
+                                            <option value="Pure Premium Matcha" data-price="25000">Pure Premium Matcha - Rp 25.000</option>
+                                            <option value="Velvet Dark Chocolate" data-price="23000">Velvet Dark Chocolate - Rp 23.000</option>
+                                            <option value="Summer Berry Mojito" data-price="22000">Summer Berry Mojito - Rp 22.000</option>
+                                            <option value="Butter Croissant" data-price="18000">Butter Croissant - Rp 18.000</option>
+                                            <option value="Kafie Rice Bowl" data-price="35000">Kafie Rice Bowl - Rp 35.000</option>
+                                            <option value="Pain au Chocolat" data-price="22000">Pain au Chocolat - Rp 22.000</option>
+                                        </select>
+                                        <div class="invalid-feedback">Harap pilih menu pesanan Anda.</div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label small fw-bold text-secondary">Jumlah Item (Quantity)</label>
+                                        <input type="number" class="form-control rounded-3" id="orderQty" min="1" value="1" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label small fw-bold text-secondary">Metode Layanan</label>
+                                        <select class="form-select rounded-3" id="orderMetode" required>
+                                            <option value="Dine-in (Makan di Tempat)">Dine-in (Makan di Tempat)</option>
+                                            <option value="Take-away (Bawa Pulang)">Take-away (Bawa Pulang)</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label small fw-bold text-secondary">Catatan Tambahan</label>
+                                        <textarea class="form-control rounded-3" id="orderCatatan" placeholder="Contoh: Less Sugar / Tanpa Telur" rows="2"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="my-4 p-3 bg-light rounded-3 d-flex justify-content-between align-items-center border">
+                                    <span class="fw-bold text-secondary mb-0">Total Tagihan Instan:</span>
+                                    <h4 class="fw-bold text-danger mb-0" id="liveTotalHarga">Rp 0</h4>
+                                </div>
+
+                                <button type="submit" class="btn btn-dark w-100 py-3 rounded-3 fw-bold btn-hover-grow" id="btnSubmitOrder">
+                                    <i class="fa-brands fa-whatsapp"></i> Kirim Order ke WhatsApp Kasir
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- MODAL POP-UP KERANJANG UTAMA (JS) -->
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 rounded-4 shadow">
+                <div class="modal-header bg-dark text-white border-0">
+                    <h5 class="modal-title fw-bold"><i class="fa-solid fa-list-check text-warning"></i> Keranjang Belanja</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div id="cartItemsList" class="mb-3"><p class="text-center text-muted my-3">Belum ada item pilihan.</p></div>
+                    <hr>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h6 class="fw-bold mb-0">Total Belanja:</h6>
+                        <h5 class="fw-bold text-danger mb-0" id="cartTotalPrice">Rp 0</h5>
+                    </div>
+                    <button class="btn btn-warning w-100 fw-bold py-2 rounded-3 btn-hover-grow" id="btnCheckoutWhatsApp"><i class="fa-brands fa-whatsapp"></i> Checkout Via WhatsApp</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL POP-UP DETAIL PRODUK -->
+    <div class="modal fade" id="detailModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 rounded-4 shadow">
+                <div class="modal-header bg-dark text-white border-0">
+                    <h5 class="modal-title fw-bold" id="modalTitle"></h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4"><p id="modalDesc" class="text-muted mb-0"></p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS Terpisah -->
+    <script src="script.js"></script>
+</body>
+</html>
