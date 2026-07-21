@@ -1,159 +1,143 @@
-document.addEventListener("DOMContentLoaded", () => {
-    
-    // ================= 1. PEMBENAHAN NAVIGASI SPA LOGIC =================
-    const navLinks = document.querySelectorAll(".navbar-nav [data-page], .btn[data-page]");
-    const sections = document.querySelectorAll(".spa-page");
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #eef3ed !important; 
+    background-image: 
+        linear-gradient(rgba(238, 243, 237, 0.82), rgba(67, 163, 48, 0.82)), 
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30 Z' fill='none' stroke='%23bcd0bb' stroke-width='1.5'/%3E%3Ccircle cx='30' cy='30' r='6' fill='none' stroke='%23ffc107' stroke-width='1.5'/%3E%3Cpath d='M30 12 L30 20 M30 40 L30 48 M12 30 L20 30 M40 30 L48 30' stroke='%23bcd0bb' stroke-width='1'/%3E%3C/svg%3E") !important;
+    background-repeat: repeat !important;
+    background-attachment: fixed !important; /* Membuat background tetap tenang saat di-scroll */
+}
 
-    function navigateToPage(targetPage) {
-        document.querySelectorAll(".navbar-nav .nav-link").forEach(item => item.classList.remove("active"));
-        
-        const targetNavLink = document.querySelector(`.navbar-nav [data-page="${targetPage}"]`);
-        if (targetNavLink) targetNavLink.classList.add("active");
 
-        sections.forEach(section => {
-            if (section.id === `page-${targetPage}`) {
-                section.classList.remove("d-none");
-                section.classList.add("page-active");
-            } else {
-                section.classList.remove("page-active");
-                section.classList.add("d-none");
-            }
-        });
-        window.scrollTo(0, 0);
-    }
+.jumbotron-hero {
+    background: linear-gradient(rgba(15, 12, 10, 0.75), rgba(26, 20, 17, 0.9)), 
+                url('https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&w=1400&q=80') no-repeat center center/cover;
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
 
-    navLinks.forEach(link => {
-        link.addEventListener("click", (e) => {
-            e.preventDefault();
-            const targetPage = link.getAttribute("data-page");
-            navigateToPage(targetPage);
-        });
-    });
+/* Efek Teks Gradasi Emas */
+.text-gradient {
+    font-family: 'Playfair Display', serif;
+    background: linear-gradient(135deg, #ffffff 50%, #ffc107 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
-    // ================= 2. LIVE ESTIMASI HARGA FORM PEMBELIAN KONTAK =================
-    const orderProduk = document.getElementById("orderProduk");
-    const orderQty = document.getElementById("orderQty");
-    const liveTotalHarga = document.getElementById("liveTotalHarga");
-    const contactOrderForm = document.getElementById("contactOrderForm");
+.text-muted-custom {
+    color: #dfdcd6 !important;
+}
 
-    function calculateLivePrice() {
-        const selectedOption = orderProduk.options[orderProduk.selectedIndex];
-        if (!selectedOption || selectedOption.value === "") {
-            liveTotalHarga.innerText = "Rp 0";
-            return;
-        }
-        const price = parseInt(selectedOption.getAttribute("data-price"));
-        const qty = parseInt(orderQty.value) || 1;
-        const total = price * qty;
-        liveTotalHarga.innerText = `Rp ${total.toLocaleString('id-ID')}`;
-    }
 
-    if (orderProduk && orderQty) {
-        orderProduk.addEventListener("change", calculateLivePrice);
-        orderQty.addEventListener("input", calculateLivePrice);
-    }
+.glass-button {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+.glass-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #ffc107;
+    color: #ffc107;
+}
 
-    if (contactOrderForm) {
-        contactOrderForm.addEventListener("submit", (e) => {
-            e.preventDefault();
+.carousel-fade .carousel-item {
+    opacity: 0;
+    transition-duration: 0.8s;
+    transition-property: opacity;
+}
 
-            if (!contactOrderForm.checkValidity()) {
-                e.stopPropagation();
-                contactOrderForm.classList.add("was-validated");
-                return;
-            }
+.carousel-fade .carousel-item.active {
+    opacity: 1;
+}
 
-            const nama = document.getElementById("orderNama").value;
-            const produk = orderProduk.value;
-            const qty = orderQty.value;
-            const metode = document.getElementById("orderMetode").value;
-            const catatan = document.getElementById("orderCatatan").value || "-";
-            const totalHarga = liveTotalHarga.innerText;
+.ken-burns {
+    animation: zoomSlow 24s infinite alternate;
+    transition: transform 0.5s ease;
+}
 
-            const waMessage = `Halo Kasir Kafie Kofie Pekanbaru,\nSaya ingin memesan via Form Instan Kontak:\n\n` +
-                              `• *Nama Pemesan:* ${nama}\n` +
-                              `• *Menu Pilihan:* ${produk}\n` +
-                              `• *Jumlah:* ${qty}x\n` +
-                              `• *Metode:* ${metode}\n` +
-                              `• *Catatan:* ${catatan}\n\n` +
-                              `*Total Akhir:* ${totalHarga}\n\nMohon diproses ya kak!`;
+@keyframes zoomSlow {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.18); }
+}
 
-            window.open(`https://wa.me/6287794736116?text=${encodeURIComponent(waMessage)}`, '_blank');
-            contactOrderForm.reset();
-            contactOrderForm.classList.remove("was-validated");
-            liveTotalHarga.innerText = "Rp 0";
-        });
-    }
+.img-ratio-container {
+    position: relative;
+    width: 100%;
+    padding-top: 65%;
+    overflow: hidden;
+    background-color: #e9ecef;
+}
 
-    // ================= 3. UTILITIES KERANJANG PADA HALAMAN MENU =================
-    let cart = [];
-    const cartCount = document.getElementById("cartCount");
-    const cartItemsList = document.getElementById("cartItemsList");
-    const cartTotalPrice = document.getElementById("cartTotalPrice");
+.img-ratio-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
 
-    function updateCartUI() {
-        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-        if (cartCount) cartCount.innerText = totalItems;
+.product-card {
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
 
-        if (cart.length === 0) {
-            if (cartItemsList) cartItemsList.innerHTML = `<p class="text-center text-muted my-3">Belum ada item pilihan.</p>`;
-            if (cartTotalPrice) cartTotalPrice.innerText = "Rp 0";
-            return;
-        }
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08) !important;
+}
 
-        let htmlContent = "";
-        let totalBill = 0;
+.product-card:hover .img-ratio-container img {
+    transform: scale(1.08);
+}
 
-        cart.forEach(item => {
-            const subTotal = item.price * item.quantity;
-            totalBill += subTotal;
-            htmlContent += `
-                <div class="d-flex justify-content-between align-items-center mb-2 border-bottom pb-2">
-                    <div>
-                        <h6 class="fw-bold mb-0 small">${item.title}</h6>
-                        <small class="text-muted">Rp ${item.price.toLocaleString('id-ID')} x ${item.quantity}</small>
-                    </div>
-                    <span class="fw-bold text-dark small">Rp ${subTotal.toLocaleString('id-ID')}</span>
-                </div>`;
-        });
+.nav-link { transition: all 0.2s ease; }
+.nav-link:hover, .nav-link.active { color: #ffc107 !important; }
 
-        if (cartItemsList) cartItemsList.innerHTML = htmlContent;
-        if (cartTotalPrice) cartTotalPrice.innerText = `Rp ${totalBill.toLocaleString('id-ID')}`;
-    }
+.card-feature {
+    background: #ffffff;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.card-feature:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06) !important;
+    border-color: #ffc107 !important;
+}
 
-    document.addEventListener("click", (e) => {
-        if (e.target && (e.target.classList.contains("btn-add-cart") || e.target.classList.contains("btn-buy-instant"))) {
-            const id = e.target.getAttribute("data-id");
-            const title = e.target.getAttribute("data-title");
-            const price = parseInt(e.target.getAttribute("data-price"));
+.icon-animated-box {
+    width: 75px;
+    height: 75px;
+    background-color: #f8f9fa;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.4s ease;
+}
+.card-feature:hover .icon-animated-box {
+    background-color: #212529;
+    transform: rotate(360deg) scale(1.08);
+}
 
-            const existingItem = cart.find(item => item.id === id);
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({ id, title, price, quantity: 1 });
-            }
-            updateCartUI();
-            alert(`"${title}" dimasukkan ke keranjang belanja.`);
-        }
-    });
+.btn-hover-grow { transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.btn-hover-grow:hover { transform: scale(1.04); }
 
-    if (document.getElementById("btnCheckoutWhatsApp")) {
-        document.getElementById("btnCheckoutWhatsApp").addEventListener("click", () => {
-            if (cart.length === 0) return alert("Keranjang belanja kosong!");
-            let msg = "Halo Kafie Kofie Pekanbaru, saya ingin memesan menu:\n\n";
-            cart.forEach((item, i) => msg += `${i+1}. ${item.title} (${item.quantity}x)\n`);
-            window.open(`https://wa.me/6287794736116?text=${encodeURIComponent(msg)}`, '_blank');
-        });
-    }
+.img-container-frame { transition: outline 0.3s ease; }
+.img-container-frame:hover { outline: 4px solid #ffc107; }
 
-    // ================= 4. DETAIL POP-UP MODAL DINAMIS =================
-    const dModal = new bootstrap.Modal(document.getElementById('detailModal'));
-    document.querySelectorAll(".btn-detail-trigger").forEach(btn => {
-        btn.addEventListener("click", () => {
-            document.getElementById('modalTitle').innerText = btn.getAttribute("data-title");
-            document.getElementById('modalDesc').innerText = btn.getAttribute("data-desc");
-            dModal.show();
-        });
-    });
-});
+.bg-brown-gradient { background: linear-gradient(135deg, #2c221e 0%, #1a1412 100%); }
+.img-carousel { height: 190px; object-fit: cover; }
+
+.animate-pulse { animation: pulse 2s infinite; }
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+    100% { transform: scale(1); }
+}
