@@ -1,9 +1,14 @@
 body {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    background-color: #faf8f5;
+    background-color: #eef3ed !important; 
+    background-image: 
+        linear-gradient(rgba(238, 243, 237, 0.82), rgba(67, 163, 48, 0.82)), 
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30 Z' fill='none' stroke='%23bcd0bb' stroke-width='1.5'/%3E%3Ccircle cx='30' cy='30' r='6' fill='none' stroke='%23ffc107' stroke-width='1.5'/%3E%3Cpath d='M30 12 L30 20 M30 40 L30 48 M12 30 L20 30 M40 30 L48 30' stroke='%23bcd0bb' stroke-width='1'/%3E%3C/svg%3E") !important;
+    background-repeat: repeat !important;
+    background-attachment: fixed !important; /* Membuat background tetap tenang saat di-scroll */
 }
 
-/* --- UPDATE HOME PAGE GAYA GLASSMORPHISM PREMIUM --- */
+
 .jumbotron-hero {
     background: linear-gradient(rgba(15, 12, 10, 0.75), rgba(26, 20, 17, 0.9)), 
                 url('https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&w=1400&q=80') no-repeat center center/cover;
@@ -18,7 +23,7 @@ body {
     font-family: 'Playfair Display', serif;
     background: linear-gradient(135deg, #ffffff 50%, #ffc107 100%);
     -webkit-background-clip: text;
-    background-clip: text; /* <--- Tambahkan baris standar ini */
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -26,7 +31,7 @@ body {
     color: #dfdcd6 !important;
 }
 
-/* Desain Tombol Transparan Mewah */
+
 .glass-button {
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(8px);
@@ -40,7 +45,6 @@ body {
     color: #ffc107;
 }
 
-/* --- ANIMASI SLIDESHOW DENGAN EFFECT KEN BURNS (ZOOM SLOW) --- */
 .carousel-fade .carousel-item {
     opacity: 0;
     transition-duration: 0.8s;
@@ -61,7 +65,6 @@ body {
     100% { transform: scale(1.18); }
 }
 
-/* --- SOLUSI CARD RAPI: PEMBATAS RASIO ASPEK GAMBAR --- */
 .img-ratio-container {
     position: relative;
     width: 100%;
@@ -95,15 +98,9 @@ body {
     transform: scale(1.08);
 }
 
-/* --- TRANSISI INTERAKSI NAVIGASI --- */
-.nav-link {
-    transition: all 0.2s ease;
-}
-.nav-link:hover, .nav-link.active {
-    color: #ffc107 !important;
-}
+.nav-link { transition: all 0.2s ease; }
+.nav-link:hover, .nav-link.active { color: #ffc107 !important; }
 
-/* --- ANIMASI ICON BERPUTAR PADA BERANDA --- */
 .card-feature {
     background: #ffffff;
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -129,32 +126,16 @@ body {
     transform: rotate(360deg) scale(1.08);
 }
 
-/* --- TOMBOL GROW EFFECT --- */
-.btn-hover-grow {
-    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-.btn-hover-grow:hover {
-    transform: scale(1.04);
-}
+.btn-hover-grow { transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.btn-hover-grow:hover { transform: scale(1.04); }
 
-.img-container-frame {
-    transition: outline 0.3s ease;
-}
-.img-container-frame:hover {
-    outline: 4px solid #ffc107;
-}
+.img-container-frame { transition: outline 0.3s ease; }
+.img-container-frame:hover { outline: 4px solid #ffc107; }
 
-.bg-brown-gradient {
-    background: linear-gradient(135deg, #2c221e 0%, #1a1412 100%);
-}
-.img-carousel {
-    height: 190px;
-    object-fit: cover;
-}
+.bg-brown-gradient { background: linear-gradient(135deg, #2c221e 0%, #1a1412 100%); }
+.img-carousel { height: 190px; object-fit: cover; }
 
-.animate-pulse {
-    animation: pulse 2s infinite;
-}
+.animate-pulse { animation: pulse 2s infinite; }
 @keyframes pulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.08); }
